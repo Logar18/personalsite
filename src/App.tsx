@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { SideMenu, Home, Compiler, VoteSafe, Algorithms, Linux, LanguageTheory, Database } from './components/index';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='p-20 flex'>
+      <Router>
+        <SideMenu/>
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/compiler' element={<Compiler/>}/>
+          <Route path='/votesafe' element={<VoteSafe/>}/>
+          <Route path='/algorithms' element={<Algorithms/>}/>
+          <Route path='/linux' element={<Linux/>}/>
+          <Route path='/languagetheory' element={<LanguageTheory/>}/>
+          <Route path='/database' element={<Database/>}/>
+        </Routes>
+      </Router>
     </div>
   );
 }
