@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom'
 
 const SideMenu = () => {
   return (
-    <div className='w-1/5 flex-col justify-center h-screen border-r border-black items-center'>
-            {/* <Link to="/">
+    <div className='invisible w-0 md:visible md:w-1/5 flex-col justify-center h-screen lg:border-r lg:border-black items-center sticky top-5'>
+            <Link to="/">
                 <h1 className='text-5xl font-medium mb-5'>Home</h1>
-            </Link> */}
+            </Link>
             <h1 className='text-3xl mb-1'>Projects</h1>
             <ul className='list-none flex-col items-center justify-center'>
                 <Link to="/compiler">

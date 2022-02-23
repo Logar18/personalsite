@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, {  } from 'react';
 import './App.css';
 import { SideMenu, Home, Compiler, VoteSafe, Algorithms, Linux, LanguageTheory, Database } from './components/index';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
-
   return (
     <div className='p-20 flex'>
       <Router>
@@ -17,6 +16,10 @@ function App() {
           <Route path='/linux' element={<Linux/>}/>
           <Route path='/languagetheory' element={<LanguageTheory/>}/>
           <Route path='/database' element={<Database/>}/>
+          <Route path='/grammar' element={() => { 
+            window.location.href = 'https://www.labouseur.com/courses/compilers/grammar.pdf'; 
+            return null;
+          }}/>
         </Routes>
       </Router>
     </div>

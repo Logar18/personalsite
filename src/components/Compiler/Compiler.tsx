@@ -6,12 +6,49 @@ const Compiler = () => {
     const [code, setCode] = useState("");
     const [output, setOutput] = useState("$ ");
     const [outputMenu, setOutputMenu] = useState("");
+    
+    const handleLoadTest = (test: string) => {
+        setCode(test);
+    }
 
     return (
     <div className='flex-col w-full px-10'>
         <CompilerHeader/>
-        <div className='flex justify-end' onClick={()=>{setOutput("$ " + code)}}>
-            <p className='px-6 border-x border-t border-black rounded-t-md bg-lime-500 hover:cursor-pointer hover:bg-lime-600'>Compile</p>
+        <div className='flex justify-end'>
+            <div className="relative inline-block text-left">
+                <button id="dropdownButton" data-dropdown-toggle="dropdown" className='px-6 border-x border-t border-black rounded-tl-md bg-slate-300 hover:cursor-pointer hover:bg-slate-400' type="button">Load Test</button>
+                <div id="dropdown" className="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-300 shadow dark:bg-gray-700">
+                    <ul className="py-1" aria-labelledby="dropdownButton">
+                        <li>
+                            <p className="block py-2 px-4 text-sm hover:bg-gray-100 hover:cursor-pointer" onClick={() => handleLoadTest('Lex test1')}>Lex test1</p>
+                        </li>
+                        <li>
+                            <p className="block py-2 px-4 text-sm hover:bg-gray-100 hover:cursor-pointer" onClick={() => handleLoadTest('Lex test2')}>Lex test2</p>
+                        </li>
+                        <li>
+                            <p className="block py-2 px-4 text-sm hover:bg-gray-100 hover:cursor-pointer" onClick={() => handleLoadTest('Lex test3')}>Lex test3</p>
+                        </li>
+                        <li>
+                            <p className="block py-2 px-4 text-sm hover:bg-gray-100 hover:cursor-pointer" onClick={() => handleLoadTest('Lex test4')}>Lex test4</p>
+                        </li>
+                    </ul>
+                    <ul className="py-1" aria-labelledby="dropdownButton">
+                        <li>
+                            <p className="block py-2 px-4 text-sm hover:bg-gray-100 hover:cursor-pointer" onClick={() => handleLoadTest('Parse test1')}>Parse test1</p>
+                        </li>
+                        <li>
+                            <p className="block py-2 px-4 text-sm hover:bg-gray-100 hover:cursor-pointer" onClick={() => handleLoadTest('Parse test2')}>Parse test2</p>
+                        </li>
+                        <li>
+                            <p className="block py-2 px-4 text-sm hover:bg-gray-100 hover:cursor-pointer" onClick={() => handleLoadTest('Parse test3')}>Parse test3</p>
+                        </li>
+                        <li>
+                            <p className="block py-2 px-4 text-sm hover:bg-gray-100 hover:cursor-pointer" onClick={() => handleLoadTest('Parse test4')}>Parse test4</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p className='px-6 border-x border-t border-black rounded-tr-md bg-lime-500 hover:cursor-pointer hover:bg-lime-600' onClick={()=>{setOutput("$ " + code)}}>Compile</p>
         </div>
         <div className='border border-black'>
             <CodeEditor
@@ -36,6 +73,7 @@ const Compiler = () => {
                     padding:10,
                     color: "white",
                     fontSize: 12,
+                    height: 150,
                     backgroundColor: "#191919",
                     fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
                 }}>
@@ -72,6 +110,7 @@ const Compiler = () => {
             </textarea>
         </div>
     </div>  
+    
     )
 }
 
