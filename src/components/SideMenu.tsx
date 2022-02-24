@@ -5,7 +5,7 @@ const SideMenu = () => {
   return (
     <div className='invisible w-0 md:visible md:w-1/5 flex-col justify-center h-screen lg:border-r lg:border-black items-center sticky top-5'>
             <Link to="/">
-                <h1 className='text-5xl font-medium mb-5'>Home</h1>
+                <h1 className='text-5xl font-medium mb-5'>Logan's Portfolio</h1>
             </Link>
             <h1 className='text-3xl mb-1'>Projects</h1>
             <ul className='list-none flex-col items-center justify-center'>
@@ -40,6 +40,11 @@ const SideMenu = () => {
                 <Link to="/database">
                     <li className='hover:cursor-pointer hover:font-medium font-light ml-1'>
                         Database Management
+                    </li>
+                </Link>
+                <Link to="/formallang">
+                    <li className='hover:cursor-pointer hover:font-medium font-light ml-1'>
+                        Formal Languages
                     </li>
                 </Link>
             </ul>

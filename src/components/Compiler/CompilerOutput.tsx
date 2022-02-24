@@ -6,7 +6,7 @@ const CompilerOutput = () => {
 
     return (
         <>
-        <div className='flex mt-20'>
+        <div className='flex mt-10'>
                     <ul className='flex list-none font-light'>
                         <li className='p-2 border border-black hover:cursor-pointer rounded-tl-md' onClick={() => {setOutputMenu('CST')}}>
                             Concrete Syntax Tree

@@ -15,6 +15,7 @@ const Compiler = () => {
     return (
     <div className='flex-col w-full px-10'>
         <CompilerHeader/>
+        
 
         {/* BUTTONS */}
         <div className='flex justify-end'>
@@ -54,6 +55,9 @@ const Compiler = () => {
                 }}>
             </textarea>
         </div>
+
+
+        
         <CompilerOutput/>
     </div>  
     
