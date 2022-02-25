@@ -3,7 +3,7 @@ import { SiTypescript, SiNodedotjs, SiReact, SiPostgresql } from 'react-icons/si
 
 const VoteSafeHeader = () => {
   return (
-    <div className='flex-col justify-between mb-10'>
+    <div className='flex-col justify-between'>
       <div className='flex'>
         <p className='text-6xl font-bold'>VoteSafe</p>
       </div>

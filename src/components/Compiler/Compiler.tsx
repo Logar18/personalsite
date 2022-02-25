@@ -1,21 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import CompilerHeader from './CompilerHeader';
 import DropDown from './DropDown';
 import CompilerOutput from './CompilerOutput';
+import { useLocation } from 'react-router';
 
 const Compiler = () => {
     const [code, setCode] = useState("");
     const [output, setOutput] = useState("$ ");
+    const location = useLocation();
 
     const handleLoadTest = (test: string) => {
         setCode(test);
     }
 
+ 
     return (
     <div className='flex-col w-full px-10'>
         <CompilerHeader/>
-        
 
         {/* BUTTONS */}
         <div className='flex justify-end'>
@@ -45,6 +47,7 @@ const Compiler = () => {
             <textarea
                 className='w-full'
                 value={output}
+                readOnly
                 style={{
                     padding:10,
                     color: "white",
@@ -55,9 +58,6 @@ const Compiler = () => {
                 }}>
             </textarea>
         </div>
-
-
-        
         <CompilerOutput/>
     </div>  
     

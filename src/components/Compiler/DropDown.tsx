@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useLocation } from 'react-router'
 
 type DropDownProps = {
     handleLoadTest: Function
 }
 const DropDown = (props: DropDownProps) => {
+
+    const location = useLocation();
+    useEffect(() => {
+        
+    }, [location])
+
   return (
     <div className="relative inline-block text-left">
                 <button id="dropdownButton" data-dropdown-toggle="dropdown" className='px-6 border-x border-t border-black rounded-tl-md bg-slate-300 hover:cursor-pointer hover:bg-slate-400' type="button">Load Test</button>

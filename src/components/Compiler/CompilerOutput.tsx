@@ -26,6 +26,7 @@ const CompilerOutput = () => {
                 <textarea
                     className='w-full'
                     value={outputMenu}
+                    readOnly
                     style={{
                         padding:10,
                         color: "black",
