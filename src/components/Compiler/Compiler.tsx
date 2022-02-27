@@ -18,6 +18,7 @@ const Compiler = () => {
 
     const handleCompile = async ()  => {
         let output = await runCode(code);
+        
         if(output.data == []) {
             setProgramOutput("$ ERROR COMPILING CODE - CHECK LOGS")
             setOutputWindow("$ ERROR COMPILING CODE - CHECK LOGS")
