@@ -18,8 +18,15 @@ const Compiler = () => {
 
     const handleCompile = async ()  => {
         let output = await runCode(code);
-        setProgramOutput(output);
-        setOutputWindow(formatOutput(programOutput));
+        if(output.data == []) {
+            setProgramOutput("$ ERROR COMPILING CODE - CHECK LOGS")
+            setOutputWindow("$ ERROR COMPILING CODE - CHECK LOGS")
+        }
+        else {
+            setProgramOutput(output);
+            setOutputWindow(formatOutput(programOutput));
+        }
+        
     }
 
     const formatOutput = (output:any) => {
@@ -84,9 +91,9 @@ const Compiler = () => {
                     padding:10,
                     color: "white",
                     fontSize: 12,
-                    minHeight: 184,
-                    height: 184,
-                    maxHeight: 184,
+                    minHeight: 224,
+                    height: 224,
+                    maxHeight: 224,
                     backgroundColor: "#191919",
                     fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
                 }}>
