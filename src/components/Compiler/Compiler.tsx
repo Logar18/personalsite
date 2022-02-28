@@ -9,35 +9,31 @@ import { runCode } from './API';
 const Compiler = () => {
     const [code, setCode] = useState("");
     const [outputWindow, setOutputWindow] = useState("$ ");
-    const [programOutput, setProgramOutput] = useState({});
+    const [programOutput, setProgramOutput] = useState("$ ");
     const location = useLocation();
+    const [lexOutput, setLexOutput] = useState([]);
+    const [parseOutput, setParseOutput] = useState([]);
 
     const handleLoadTest = (test: string) => {
         setCode(test);
     }
 
     const handleCompile = async ()  => {
-        let output = await runCode(code);
-        
-        if(output.data == []) {
-            setProgramOutput("$ ERROR COMPILING CODE - CHECK LOGS")
-            setOutputWindow("$ ERROR COMPILING CODE - CHECK LOGS")
-        }
-        else {
-            setProgramOutput(output);
-            setOutputWindow(formatOutput(programOutput));
-        }
-        
+        let output = await runCode(code)
+        setOutputWindow("$ CHECK DEBUG LOGS");
+        setLexOutput((output.data[0]))
+        setParseOutput((output.data[1]))
     }
 
     const formatOutput = (output:any) => {
         let formattedOutput = "";
-        output.data.forEach((e: string) => {
-            e != "\n" ? formattedOutput += ("$ " + e + "\n") : formattedOutput += ("$ " + e);
-        });
+        if(output != []) {
+            output.forEach((e: string) => {
+                e != "\n" ? formattedOutput += ("$ " + e + "\n") : formattedOutput += ("$ " + e);
+            });
+        }
         return formattedOutput;
     }
-
  
     return (
     <div className='flex-col w-full px-10'>
@@ -58,7 +54,7 @@ const Compiler = () => {
                 onChange={(evn) => setCode(evn.target.value)}
                 padding={10}
                 style={{
-                    height: 500,
+                    height: 400,
                     fontSize: 12,
                     backgroundColor: "#f5f5f5",
                     fontFamily: 'ui-monospace,SFMono-Regular,SF Mono,Consolas,Liberation Mono,Menlo,monospace',
@@ -70,13 +66,13 @@ const Compiler = () => {
         <div className='flex'>
             <div className='w-1/6 flex-col '>
             <ul className='flex-col list-none font-light'>
-                        <li className='p-3 text-sm bg-gray-400 hover:text-white border border-black hover:cursor-pointer' onClick={() => {setOutputWindow("$ PROGRAM OUTPUT N/A")}}>
+                        <li className='p-3 text-sm bg-gray-400 hover:text-white border border-black hover:cursor-pointer' onClick={() => {setOutputWindow("$ CHECK DEBUG LOGS");}}>
                             Program Output
                         </li>
-                        <li className='p-3 text-sm bg-gray-400 hover:text-white border border-black hover:cursor-pointer' onClick={() => {setOutputWindow(formatOutput(programOutput))}}>
+                        <li className='p-3 text-sm bg-gray-400 hover:text-white border border-black hover:cursor-pointer' onClick={() => {console.log(formatOutput(lexOutput)); setOutputWindow(formatOutput(lexOutput))}}>
                             Lexical Analysis Debug
                         </li>
-                        <li className='p-3 text-sm bg-gray-400 hover:text-white border border-black hover:cursor-pointer' onClick={() => {setOutputWindow("$ PARSER OUTPUT N/A")}}>
+                        <li className='p-3 text-sm bg-gray-400 hover:text-white border border-black hover:cursor-pointer' onClick={() => {setOutputWindow(formatOutput(parseOutput))}}>
                             Parser Debug
                         </li>
                         <li className='p-3 text-sm bg-gray-400 hover:text-white border border-black hover:cursor-pointer rounded-bl-md' onClick={() =>{setOutputWindow("$ SEMANTIC ANALYSIS OUTPUT N/A")}}>
