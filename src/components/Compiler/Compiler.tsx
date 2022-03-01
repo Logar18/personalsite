@@ -64,7 +64,7 @@ const Compiler = () => {
 
         {/* EDITOR OUTPUT */}
         <div className='flex'>
-            <div className='w-1/6 flex-col '>
+            <div className='w-1/6 flex-col'>
             <ul className='flex-col list-none font-light'>
                         <li className='p-3 text-sm bg-gray-400 hover:text-white border border-black hover:cursor-pointer' onClick={() => {setOutputWindow("$ CHECK DEBUG LOGS");}}>
                             Program Output
